@@ -100,7 +100,6 @@ function drawScene4() {
   const startY      = height / 2 - totalHeight / 2 + BUTTON_Y_OFFSET; // górny przycisk
   const bottomY     = startY + totalHeight; // dolny brzeg listy
 
-
   // 3. Przyciski
   drawOptions(startY);
 
@@ -113,7 +112,8 @@ function drawScene4() {
 
   // 5. Przycisk DALEJ (po wybraniu 3. opcji)
   if (selectedIndex === 2) {
-    drawDalejButton(width/2, height - 40);
+    // Przycisk DALEJ pojawia się wyżej (120px od dołu)
+    drawDalejButton(width/2, height - 120);
   }
 }
 
@@ -182,14 +182,13 @@ function mousePressed() {
       }
     }
 
-   // klik w przycisk DALEJ
+    // klik w przycisk DALEJ (wyżej: 120px od dołu)
     if (selectedIndex === 2) {
       const x = width/2;
-      const y = height - 40;
+      const y = height - 120;
       const r = BTN_DIAMETER / 2;
       if (dist(mouseX, mouseY, x, y) < r) {
         if (clickSound && clickSound.isLoaded()) clickSound.play();
-        // Przeniesienie do scena6
         window.location.href = "https://mp123-dot.github.io/scena6/";
         return;
       }
@@ -232,7 +231,6 @@ class Glitter {
     ellipse(this.x, this.y, this.size);
   }
 }
-
 // -------------------------------------------------------------
 //                     RESPONSYWNOŚĆ
 // -------------------------------------------------------------
